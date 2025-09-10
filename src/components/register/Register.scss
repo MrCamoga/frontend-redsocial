@@ -1,0 +1,30 @@
+.signForm {
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        max-width: 400px;
+        min-width: 250px;
+        h1 {
+            align-self: center;
+        }
+        & > div {
+            display: flex;
+            flex-direction: column;
+        }
+        input[type="submit"] {
+            align-self: center;
+    
+        }
+        input:invalid {
+            border-color: red;
+        }
+        input:valid {
+            border-color: green;
+        }
+        span.error {
+            color: red;
+        }
+    }
+    align-self: center;
+}
