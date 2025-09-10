@@ -1,0 +1,11 @@
+.goBack {
+    padding: 10px;
+    outline: 1px solid #ccc;
+    span {
+        padding: 8px;
+        border-radius: 8px;
+        &:hover {
+            background-color: #ccc;
+        }
+    }
+}
