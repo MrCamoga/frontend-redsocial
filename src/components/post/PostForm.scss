@@ -1,0 +1,19 @@
+.postForm {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    gap: 5px;
+    outline: 1px solid #ccc;
+    .postButton {
+        align-self: flex-end;
+    }
+    input[type="text"], textarea {
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #aaa;
+        resize: none;
+    }
+    .previewImage {
+        height: 100px;
+    }
+}
