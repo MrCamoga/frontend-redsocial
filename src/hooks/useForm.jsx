@@ -8,7 +8,6 @@ export const useForm = ({ validation, onSubmit }) => {
     const validateAndPrint = (name, value) => {
         const validations = (validation[name])(value);
         for(let [valid,msg] of validations) {
-            console.log(valid,msg)
             if(!valid) {
                 setMessage(msg);
                 return msg;
@@ -26,7 +25,6 @@ export const useForm = ({ validation, onSubmit }) => {
         const msg = validateAndPrint(name, value);
         setMessage(msg);
         event.target.setCustomValidity(msg);
-        console.log(formData);
     }
 
     const handleSubmit = async (e) => {

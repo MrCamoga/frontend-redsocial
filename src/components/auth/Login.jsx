@@ -5,7 +5,7 @@ import { useForm } from '../../hooks/useForm';
 const LoginView = () => {
     const dispatch = useDispatch();
 
-    const onSubmit = async (form) => {
+    const onSubmit = async () => {
         dispatch(login(formData)).unwrap();
     };
 
