@@ -1,12 +1,77 @@
-# React + Vite
+# 🧑‍🤝‍🧑 Red Social
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyecto de red social desarrollado con **React**, **Redux**, **Express** y **MongoDB**, que permite a los usuarios registrarse, iniciar sesión, crear publicaciones con imágenes, comentar, dar "likes", y visualizar perfiles personales.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Funcionalidades
 
-## Expanding the ESLint configuration
+- 🔐 **Registro e inicio de sesión** con autenticación JWT.
+- 📝 **Crear y eliminar publicaciones**, con opción de subir imágenes.
+- 💬 **Comentar** publicaciones.
+- ❤️ **Dar "like"** a publicaciones y comentarios.
+- 👤 **Ver perfil del usuario** con pestañas de:
+  - Publicaciones
+  - Multimedia
+- 🌐 **Estado global** manejado con **Redux**.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tecnologías utilizadas
+
+### 🔷 Frontend
+- [React](https://reactjs.org/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [Vite](https://vitejs.dev/)
+- [React Router](https://reactrouter.com/)
+- [SASS](https://sass-lang.com/)
+
+### 🔶 Backend
+- [Express.js](https://expressjs.com/)
+- [MongoDB](https://www.mongodb.com/)
+
+---
+
+## 📦 Instalación y uso
+
+### 1. Clona el repositorio
+
+```bash
+git clone https://github.com/MrCamoga/frontend-redsocial front
+cd front
+```
+
+### 2. Instala las dependencias
+
+```bash
+npm install
+```
+
+### 3. Configura la URL de la API
+
+Edita el archivo `src/config.jsx` y cambia la URL de la API si es necesario:
+
+```js
+export const API_URL = "http://localhost:3000";
+```
+
+### 4. Ejecutar en modo desarrollo
+
+```bash
+npm run dev
+```
+
+### 5. Generar versión de producción
+
+```bash
+npm run build
+```
+
+El resultado estará en la carpeta `dist/`.
+
+---
+
+## 🔧 Requisitos adicionales
+
+- Tener el **backend corriendo** (por defecto en `http://localhost:3000`)
+- Tener una base de datos **MongoDB** activa y configurada en el backend

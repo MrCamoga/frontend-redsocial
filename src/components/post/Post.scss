@@ -1,0 +1,116 @@
+.postList, .replyList {
+    display: flex;
+    flex-direction: column;
+    .minipost {
+        outline: 1px solid #ccc;
+    }
+}
+
+.post, .minipost {
+    background-color: #fff;
+    padding: 10px;
+    .postHeader {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.3s ease-in-out;
+        a {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            & > b {
+                margin-left: 10px;
+                margin-right: 5px;
+            }
+            & > div {
+                margin-left: 10px;
+                display: flex;
+                flex-direction: column;
+                line-height: 1rem;
+            }
+        }
+        
+        span {
+            font-size: 12px;
+            color: #444;
+        }
+        b {
+            &:hover {
+                text-decoration: underline;
+                color: #222;
+            }
+        }
+        img {
+            height: 40px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            &:hover {
+                filter: brightness(95%);
+            }
+        }
+        .postDate {
+            margin-right: 10px;
+            &:hover {
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+    }
+    .postBody {
+        padding: 0px 10px;
+        word-break: break-word;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        img {
+            width: 100%;
+            border-radius: 10px;
+            padding-top: 5px;
+            align-self: center;
+            max-height: 400px;
+            object-fit: cover;
+            object-position: center;
+            cursor: pointer;
+        }
+    }
+    .postButtons {
+        padding: 5px 10px;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+}
+
+.postDetail {
+    .postReplyForm {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        gap: 5px;
+        border-bottom: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+        textarea {
+            resize: none;
+            padding: 10px;
+        }
+        .replyButton {
+            align-self: flex-end;
+        }
+    }
+}
+
+.minipost {
+    cursor: pointer;
+}
+
+.postButtons .icon {
+    font-size: 20px;
+    transition: all 0.15s ease-in-out;
+    &:hover {
+        transform: scale(1.2);
+    }
+    &.liked {
+        color: rgb(223, 25, 25);
+    }
+}

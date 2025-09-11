@@ -1,0 +1,13 @@
+.postForm {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    gap: 5px;
+    outline: 1px solid #ccc;
+    .postButton {
+        align-self: flex-end;
+    }
+    .previewImage {
+        height: 100px;
+    }
+}
