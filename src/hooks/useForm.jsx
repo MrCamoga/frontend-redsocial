@@ -1,18 +1,21 @@
 import { useState} from 'react';
 
 export const useForm = ({ validation, onSubmit }) => {
-    const [formData,setFormData] = useState({});
+    const [formData,setFormData] = useState(Object.fromEntries(Object.keys(validation).map(k => [k,null])));
     const [message,setMessage] = useState('');
     const [success,setSuccess] = useState(false);
 
-    const validateAndPrint = (name, value) => {
+    const validateAndPrint = (name, value, input) => {
+        console.log(name,value,input)
         const validations = (validation[name])(value);
         for(let [valid,msg] of validations) {
             if(!valid) {
                 setMessage(msg);
+                input.setCustomValidity(msg);
                 return msg;
             }
         }
+        input.setCustomValidity("");
         return "";
     }
 
@@ -22,15 +25,13 @@ export const useForm = ({ validation, onSubmit }) => {
             ...prev,
             [name]: value
         }));
-        const msg = validateAndPrint(name, value);
-        setMessage(msg);
-        event.target.setCustomValidity(msg);
+        setMessage(validateAndPrint(name, value, event.target));
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         for(const [field,value] of Object.entries(formData)) {
-            if(validateAndPrint(field,value)) return;
+            if(validateAndPrint(field,value,e.target[field])) return;
         }
         try {
             await onSubmit(e.target);
