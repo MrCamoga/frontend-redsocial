@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/authSlice';
 import "./Register.scss";
@@ -28,7 +26,7 @@ const Register = () => {
     const onSubmit = (form) => {
         dispatch(register(new FormData(form))).unwrap();
     };
-    
+
     const { formData, message, success, handleInputChange, handleSubmit } = useForm({validation, onSubmit });
     
     return <div className='signForm'>{success ? 

@@ -18,12 +18,7 @@ const Header = () => {
 
     useEffect(() => {
         if(token) dispatch(getUserInfo());
-        console.log("djwaiodjwaio")
     },[token]);
-
-    useEffect(() => {
-        console.log(user);
-    }, [user]);
 
     const handleLogout = () => {
         dispatch(logout());
@@ -34,9 +29,9 @@ const Header = () => {
         <nav>
             <ul>
                 <li><Link to='/'>Home</Link></li>
-                {user ?
+                {token ?
                 <>
-                    <li><Link to={`/profile/${user.username}`}><img src={user.avatar ? `${API_URL}/media/avatar/${user._id}`:'/default_pfp.svg'} alt="Profile picture" /></Link></li>
+                    <li><Link to={`/profile/${user?.username}`}><img src={user?.avatar ? `${API_URL}/media/avatar/${user._id}`:'/default_pfp.svg'} alt="Profile picture" /></Link></li>
                     <li><button onClick={handleLogout}>Logout</button></li>
                 </>:
                 <>

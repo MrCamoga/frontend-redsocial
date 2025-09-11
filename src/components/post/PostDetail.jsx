@@ -34,7 +34,6 @@ const Post = () => {
 
     const reply = async (e) => {
         e.preventDefault();
-        console.log(e.target.text.value)
         try {
             await dispatch(sendReply({postid, text: e.target.text.value})).unwrap();
             e.target.reset();

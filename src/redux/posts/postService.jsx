@@ -46,7 +46,6 @@ const postService = {
         return res.data;
     },
     sendReply: async ({postid,text}) => {
-        console.log(text)
         const res = await axios.post(`${API_URL}/posts/${postid}/comments`, {text}, { headers: { "Authorization": localStorage.getItem("token")}});
         return res.data;
     },
