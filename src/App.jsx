@@ -5,8 +5,8 @@ import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Profile from './components/profile/Profile';
 import Post from './components/post/PostDetail';
-import Register from './components/register/Register';
-import Login from './components/login/Login';
+import Register from './components/auth/Register';
+import Login from './components/auth/Login';
 import RestrictedPage from './guards/RestrictedPage';
 
 function App() {

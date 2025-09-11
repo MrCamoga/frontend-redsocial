@@ -1,26 +1,13 @@
 import { useState } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/authSlice';
 import "./Register.scss";
+import { useForm } from '../../hooks/useForm';
 
-const RegisterView = () => {
+const Register = () => {
     const dispatch = useDispatch();
-    const [formData,setFormData] = useState({});
-    const [message,setMessage] = useState('');
-    const [success,setSuccess] = useState(false);
-
-    const handleInputChange = (event) => {
-        const {name,value} = event.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-        const msg = validateAndPrint(name, value);
-        setMessage(msg);
-        event.target.setCustomValidity(msg);
-    }
-
+    
     const validation = {
         password: value => [
             [/[a-z]+/.test(value), 'Password must contain lower case letters'],
@@ -36,34 +23,14 @@ const RegisterView = () => {
         },
         screenname: value => [[value.trim().length > 0, "Name cannot be empty"]],
         email: value => [[/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value),"Invalid email"]]
-    }
-
-    // Returns msg
-    const validateAndPrint = (name, value) => {
-        const validations = (validation[name])(value);
-        for(let [valid,msg] of validations) {
-            console.log(valid,msg)
-            if(!valid) {
-                setMessage(msg);
-                return msg;
-            }
-        }
-        return "";
-    }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        for(const [field,value] of Object.entries(formData)) {
-            if(validateAndPrint(field,value)) return;
-        }
-        try {
-            await dispatch(register(new FormData(e.target))).unwrap();
-            setSuccess(true);
-        } catch(error) {
-            setMessage(error);
-        }
     };
 
+    const onSubmit = (form) => {
+        dispatch(register(new FormData(form))).unwrap();
+    };
+    
+    const { formData, message, success, handleInputChange, handleSubmit } = useForm({validation, onSubmit });
+    
     return <div className='signForm'>{success ? 
             <>
                 <h1>Sign in successful!</h1>
@@ -104,4 +71,4 @@ const RegisterView = () => {
     ;
 };
 
-export default RegisterView;
+export default Register;
