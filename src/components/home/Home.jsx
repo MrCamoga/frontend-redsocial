@@ -22,7 +22,7 @@ const Home = () => {
             <PostList posts={posts}/>
         </>:
         <div className="homePage">
-            <h1>Welcome to ________</h1>
+            <h1>Welcome to Red Social!</h1>
             <p>
                 Join a vibrant community, share your thoughts, and connect with friends around the world.
                 Sign up today or log in to get started!
