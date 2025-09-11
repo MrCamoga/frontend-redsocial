@@ -12,11 +12,13 @@ import {
 } from '../../redux/posts/postSlice';
 import { DeleteOutlined, HeartFilled, HeartOutlined } from '@ant-design/icons';
 import React, { useEffect, useState } from 'react';
+import Overlay from '../overlay/Overlay';
 
 const MiniPost = ({post, reply}) => {
     post = post || reply;
     const { user } = useSelector(state => state.auth);
     const [liked,setLiked] = useState(false);
+    const [overlay,setOverlay] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -47,7 +49,7 @@ const MiniPost = ({post, reply}) => {
 
     const handleOpenImg = (e) => {
         e.stopPropagation();
-        console.log("open full screen");
+        setOverlay(true);
     }
 
     return <div className="minipost" onClick={handleClick}>
@@ -70,6 +72,7 @@ const MiniPost = ({post, reply}) => {
             <span>{React.createElement(liked ? HeartFilled:HeartOutlined, {onClick: like, className: `icon icon-like ${liked && 'liked'}`})} {post.likes.length}</span>
             {post.userId._id == user?._id && <DeleteOutlined className='icon' onClick={handleDelete} />}
         </div>
+        {overlay &&<Overlay onClose={() => setOverlay(false)}><img src={`${API_URL}/media/${post._id}`}/></Overlay>}
     </div>
 };
 
