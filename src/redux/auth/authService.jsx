@@ -20,10 +20,6 @@ const authService = {
     getUserInfo: async () => {
         const res = await axios.get(`${API_URL}/users`, { headers: { "Authorization": localStorage.getItem('token')}});
         return res.data;
-    },
-    getProfile: async (username) => {
-        const res = await axios.get(`${API_URL}/users/${username}`, { headers: { "Authorization": localStorage.getItem('token')}});
-        return res.data;
     }
 };
 

@@ -3,7 +3,8 @@ import postService from "./postService";
 
 const initialState = {
     posts: [],
-    post: null
+    post: null,
+    profile: null
 };
 
 export const postSlice = createSlice({
@@ -13,11 +14,10 @@ export const postSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(createPost.fulfilled, (state,action) => {
             state.posts = [action.payload.data, ...state.posts];
-        // }).addCase(updatePost.fulfilled, (state,action) => {
-        //     state.success = true;
         }).addCase(deletePost.fulfilled, (state,action) => {
             state.deleteSuccess = true;
-            state.posts = state.posts.filter(post => post._id != action.payload);
+            if(state.profile && state.profile._id == action.payload.userid) state.profile.posts = state.profile.posts.filter(post => post._id != action.payload.postid);
+            state.posts = state.posts.filter(post => post._id != action.payload.postid);
         }).addCase(getPostById.fulfilled, (state,action) => {
             state.post = action.payload.data;
         }).addCase(getPosts.fulfilled, (state, action) => {
@@ -41,6 +41,8 @@ export const postSlice = createSlice({
             console.log(action.payload);
             if(action.payload.like) likedComment.likes.push(action.payload.userid);
             else likedComment.likes = likedComment.likes.remove(action.payload.userid);
+        }).addCase(getProfile.fulfilled, (state,action) => {
+            state.profile = action.payload.data;
         })
     }
 });
@@ -61,7 +63,16 @@ export const updatePost = createAsyncThunk('post/update', async (post) => {
     }
 });
 
-export const deletePost = createAsyncThunk('post/deletePost', async (postid) => {
+export const deletePost = createAsyncThunk('post/deletePost', async (postid, {getState}) => {
+    try {
+        await postService.deletePost(postid);
+        return {postid, userid: getState().auth.user._id};
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+export const deletePostProfile = createAsyncThunk('post/deletePost', async (postid) => {
     try {
         await postService.deletePost(postid);
         return postid;
@@ -126,6 +137,14 @@ export const sendReply = createAsyncThunk('post/sendReply', async (replyData) =>
         return await postService.sendReply(replyData);
     } catch (error) {
         console.log(error);
+    }
+});
+
+export const getProfile = createAsyncThunk('users/getProfile', async (username, {rejectWithValue}) => {
+    try {
+        return await postService.getProfile(username);
+    } catch (error) {
+        return rejectWithValue('User could not be found');
     }
 })
 

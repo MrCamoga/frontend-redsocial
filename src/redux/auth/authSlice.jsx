@@ -4,7 +4,6 @@ import authService from "./authService";
 const initialState = {
     user: null,
     token: localStorage.getItem('token'),
-    profile: null,
     loading: false
 };
 
@@ -27,8 +26,6 @@ export const authSlice = createSlice({
             state.token = null;
             state.user = null;
             localStorage.removeItem("token");
-        }).addCase(getProfile.fulfilled, (state,action) => {
-            state.profile = action.payload.data;
         })
     }
 });
@@ -63,14 +60,6 @@ export const getUserInfo = createAsyncThunk('users/getInfo', async () => {
     } catch (error) {
         console.log(error)
     }
-})
-
-export const getProfile = createAsyncThunk('users/getProfile', async (username) => {
-    try {
-        return await authService.getProfile(username);
-    } catch (error) {
-        console.log(error)
-    }
-})
+});
 
 export default authSlice.reducer;

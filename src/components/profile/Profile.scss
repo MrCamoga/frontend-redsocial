@@ -1,9 +1,38 @@
 .profile {
     .profileHeader {
+        padding: 15px;
         img {
             width: 100px;
             aspect-ratio: 1;
             border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+    .postsNav {
+        ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            font-weight: 600;
+            padding: 0px 100px;
+            li {
+                flex-grow: 1;
+                text-align: center;
+                max-width: 200px;
+                transition: all 0.15s ease-in-out;
+                &:has(a.active), &:hover {
+                    background-color: #ddd;
+                }
+                a {
+                    display: block;
+                    color: #777;
+                    padding: 10px 20px;
+                    &.active {
+                        color: #444;
+                    }
+                }
+            }
         }
     }
 }

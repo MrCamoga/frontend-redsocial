@@ -49,6 +49,10 @@ const postService = {
         console.log(text)
         const res = await axios.post(`${API_URL}/posts/${postid}/comments`, {text}, { headers: { "Authorization": localStorage.getItem("token")}});
         return res.data;
+    },
+    getProfile: async (username) => {
+        const res = await axios.get(`${API_URL}/users/${username}`, { headers: { "Authorization": localStorage.getItem('token')}});
+        return res.data;
     }
 };
 
