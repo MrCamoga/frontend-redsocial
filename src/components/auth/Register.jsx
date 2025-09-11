@@ -24,7 +24,7 @@ const Register = () => {
     };
 
     const onSubmit = (form) => {
-        dispatch(register(new FormData(form))).unwrap();
+        return dispatch(register(new FormData(form))).unwrap();
     };
 
     const { formData, message, success, handleInputChange, handleSubmit } = useForm({validation, onSubmit });

@@ -6,7 +6,7 @@ const LoginView = () => {
     const dispatch = useDispatch();
 
     const onSubmit = async () => {
-        dispatch(login(formData)).unwrap();
+        return dispatch(login(formData)).unwrap();
     };
 
     const validation = {
