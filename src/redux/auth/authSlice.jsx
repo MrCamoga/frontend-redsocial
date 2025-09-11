@@ -38,11 +38,11 @@ export const register = createAsyncThunk('auth/register', async (user, {rejectWi
     }
 });
 
-export const login = createAsyncThunk('auth/login', async (user) => {
+export const login = createAsyncThunk('auth/login', async (user, {rejectWithValue}) => {
     try {
         return await authService.login(user);
     } catch (error) {
-        console.log(error);
+        return rejectWithValue(error.response.data.message || error.message || "Something went wrong");
     }
 });
 
