@@ -37,7 +37,7 @@ Proyecto de red social desarrollado con **React**, **Redux**, **Express** y **Mo
 ### 1. Clona el repositorio
 
 ```bash
-git clone https://github.com/MrCamoga/TheBridge-Backend-mongoose front
+git clone https://github.com/MrCamoga/frontend-redsocial front
 cd front
 ```
 
