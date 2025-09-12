@@ -26,11 +26,11 @@ const LoginView = () => {
                 <h1>Login</h1>
                 <div>
                     <label htmlFor='username'>Email or username:</label>
-                    <input type="text" name='username' onChange={handleInputChange} placeholder='Username or email'/>
+                    <input type="text" className={formData.username && 'validate'} name='username' onChange={handleInputChange} placeholder='Username or email'/>
                 </div>
                 <div>
                     <label htmlFor='password'>Password:</label>
-                    <input type="password" name='password' onChange={handleInputChange} placeholder='Password'/>
+                    <input type="password" className={formData.password && 'validate'} name='password' onChange={handleInputChange} placeholder='Password'/>
                 </div>
                 <span className='error'>{message}</span>
                 <input type='submit' value='Login'/>

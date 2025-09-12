@@ -39,23 +39,23 @@ const Register = () => {
                 <h1>Join now!</h1>
                 <div>
                     <label htmlFor='email'>Email:</label>
-                    <input id="email" name='email' type='text' placeholder='Email' onChange={handleInputChange}/>
+                    <input id="email" name='email' className={formData.email && 'validate'} type='text' placeholder='Email' onChange={handleInputChange}/>
                 </div>
                 <div>
                     <label htmlFor='password'>Password:</label>
-                    <input id="password" name='password' type='text' placeholder='Password' onChange={handleInputChange}/>
+                    <input id="password" name='password' className={formData.password && 'validate'} type='password' placeholder='Password' onChange={handleInputChange}/>
                 </div>
                 <div>
                     <label htmlFor='reppassword'>Repeat password:</label>
-                    <input id="reppassword" name='reppassword' type='password' placeholder='Repeat password' onChange={handleInputChange}/>
+                    <input id="reppassword" name='reppassword' className={formData.reppassword && 'validate'} type='password' placeholder='Repeat password' onChange={handleInputChange}/>
                 </div>
                 <div>
                     <label htmlFor='username'>Username:</label>
-                    <input id="username" name='username' type='text' placeholder='Username' onChange={handleInputChange}/>
+                    <input id="username" name='username' className={formData.username && 'validate'} type='text' placeholder='Username' onChange={handleInputChange}/>
                 </div>
                 <div>
                     <label htmlFor='name'>Name:</label>
-                    <input id="name" name='screenname' type='text' placeholder='Screen name' onChange={handleInputChange}/>
+                    <input id="name" name='screenname' className={formData.screenname && 'validate'} type='text' placeholder='Screen name' onChange={handleInputChange}/>
                 </div>
                 <div>
                     <label htmlFor='avatar'>Profile picture:</label>
