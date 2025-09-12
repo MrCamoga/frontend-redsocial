@@ -1,13 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/authSlice';
-import "./Register.scss";
+import "./SignForm.scss";
 import { useForm } from '../../hooks/useForm';
 
 const Register = () => {
     const dispatch = useDispatch();
     
     const validation = {
-        email: value => [[/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value),"Invalid email"]],
+        email: value => [[/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value),"Invalid email"]],
         password: value => [
             [/[a-z]+/.test(value), 'Password must contain lower case letters'],
             [/[A-Z]+/.test(value), 'Password must contain upper case letters'],
@@ -23,9 +23,7 @@ const Register = () => {
         screenname: value => [[value && value.trim().length > 0, "Name cannot be empty"]],
     };
 
-    const onSubmit = (form) => {
-        return dispatch(register(new FormData(form))).unwrap();
-    };
+    const onSubmit = (form) => dispatch(register(new FormData(form))).unwrap();
 
     const { formData, message, success, handleInputChange, handleSubmit } = useForm({validation, onSubmit });
     

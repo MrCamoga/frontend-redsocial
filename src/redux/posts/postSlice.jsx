@@ -39,7 +39,7 @@ export const postSlice = createSlice({
         }).addCase(likeComment.fulfilled, (state,action) => {
             const likedComment = state.post.comments.find(comment => comment._id == action.payload.id);
             if(action.payload.like) likedComment.likes.push(action.payload.userid);
-            else likedComment.likes = likedComment.likes.remove(action.payload.userid);
+            else likedComment.likes =  likedComment.likes.filter(userid => userid != action.payload.userid);
         }).addCase(getProfile.fulfilled, (state,action) => {
             state.profile = action.payload.data;
         })
