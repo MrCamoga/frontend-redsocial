@@ -6,7 +6,6 @@ export const useForm = ({ validation, onSubmit }) => {
     const [success,setSuccess] = useState(false);
 
     const validateAndPrint = (name, value, input) => {
-        console.log(name,value,input)
         const validations = (validation[name])(value);
         for(let [valid,msg] of validations) {
             if(!valid) {

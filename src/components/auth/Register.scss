@@ -20,7 +20,10 @@
             border-color: red;
         }
         input:valid {
-            border-color: green;
+            border-color: #aaa;
+            &.validate {
+                border-color: green;
+            }
         }
         span.error {
             color: red;
