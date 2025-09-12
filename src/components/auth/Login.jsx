@@ -5,9 +5,7 @@ import { useForm } from '../../hooks/useForm';
 const LoginView = () => {
     const dispatch = useDispatch();
 
-    const onSubmit = async () => {
-        return dispatch(login(formData)).unwrap();
-    };
+    const onSubmit = () => dispatch(login(formData)).unwrap();
 
     const validation = {
         username: value => {
