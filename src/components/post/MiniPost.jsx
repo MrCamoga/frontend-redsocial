@@ -72,7 +72,7 @@ const MiniPost = ({post, reply}) => {
             <span>{React.createElement(liked ? HeartFilled:HeartOutlined, {onClick: like, className: `icon icon-like ${liked && 'liked'}`})} {post.likes.length}</span>
             {post.userId._id == user?._id && <DeleteOutlined className='icon' onClick={handleDelete} />}
         </div>
-        {overlay &&<Overlay onClose={() => setOverlay(false)}><img src={`${API_URL}/media/${post._id}`}/></Overlay>}
+        {overlay && <Overlay onClose={() => setOverlay(false)}><img src={`${API_URL}/media/${post._id}`}/></Overlay>}
     </div>
 };
 
